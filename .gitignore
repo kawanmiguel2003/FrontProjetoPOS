@@ -40,3 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+#src/app
+src/app/*
+!.gitignore # isso é necessário para incluir o próprio arquivo .gitignore dentro da pasta src/app
