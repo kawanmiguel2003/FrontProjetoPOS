@@ -1,0 +1,39 @@
+<h3>Atualização de Professores</h3>
+<hr>
+<form (ngSubmit)="atualizar(professorForm)" #professorForm="ngForm">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <label class="form-label">Nome</label>
+            <input class="form-control" name="nome" [(ngModel)]="professor.nome" #nome="ngModel" required/>
+            <div class="text-danger" *ngIf="nome.invalid && nome.touched">
+                <span *ngIf="nome.errors?.['required']">O nome é obrigatório.</span>
+                <span *ngIf="nome.errors?.['maxlength']">O nome pode ter no máximo 100 caracteres.</span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+            <label class="form-label">Biografia</label>
+            <textarea class="form-control" name="biografia" [(ngModel)]="professor.biografia"></textarea>
+        </div>
+    </div>
+    <hr>
+    <div class="text-center">
+        <button class="btn btn-danger mr-5" type="reset" (click)="cancelar()">
+            <i class="fa-solid fa-xmark"></i>
+            Cancelar
+        </button>
+        <button class="btn btn-success" type="submit" [disabled]="professorForm.invalid">
+            <i class="fa-regular fa-floppy-disk"></i>
+            Confirmar
+        </button>
+    </div>
+</form>
+
+<!--
+Estrutura esperada do objeto professor:
+{
+  "nome": "string",
+  "biografia": "string"
+}
+-->
